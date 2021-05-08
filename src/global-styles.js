@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: ${({ theme }) => theme.beta};
+    background-color: ${({ theme }) => theme.psi};
     color: ${({ theme }) => theme.gamma};
     font-size: 1.6rem;
 
@@ -65,6 +65,10 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     margin: 0;
     padding: 0;
+  }
+
+  p {
+    margin: 0;
   }
 `;
 

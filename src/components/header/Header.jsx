@@ -35,7 +35,7 @@ Header.Input = function HeaderInput() {
   return (
     <InputContainer>
       <Icon src="/images/header/search.svg" alt="Search" />
-      <Input />
+      <Input placeholder="Enter GitHub username" />
     </InputContainer>
   );
 };
