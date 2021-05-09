@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from '../components/profile/Profile';
+import { Profile } from '../components';
 
 export default function ProfileContainer() {
   return (

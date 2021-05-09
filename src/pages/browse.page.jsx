@@ -1,14 +1,18 @@
 import React from 'react';
-import HeaderContainer from '../containers/Header';
+import {
+  HeaderContainer,
+  ProfileContainer,
+  RepositoryContainer,
+} from '../containers';
 import { Container } from '../components';
-import ProfileContainer from '../containers/Profile';
 
-export default function Home() {
+export default function Browse() {
   return (
     <>
       <HeaderContainer />
       <Container>
         <ProfileContainer />
+        <RepositoryContainer />
       </Container>
     </>
   );

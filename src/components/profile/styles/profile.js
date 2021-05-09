@@ -3,6 +3,8 @@ import styled from 'styled-components/macro';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  margin-right: 8.5rem;
 `;
 
 export const Image = styled.img`
@@ -47,7 +49,7 @@ export const Item = styled.div`
 `;
 
 export const Icon = styled.img`
-  max-height: 16px;
+  height: 16px;
 
   margin-right: 9px;
 `;

@@ -17,7 +17,6 @@ export const GroupLeft = styled.div`
 
 export const Logo = styled.img`
   vertical-align: middle;
-  max-height: 4rem;
 `;
 
 export const Icon = styled.img`
@@ -46,7 +45,7 @@ export const Input = styled.input`
   background-color: ${({ theme }) => theme.beta};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  border-radius: 5px;
+  border-radius: 6px;
 
   font-size: 1.4rem;
 `;
