@@ -2,7 +2,9 @@ import React from 'react';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes.constant';
 
-export default function HeaderContainer() {
+export default function HeaderContainer(props) {
+  const { onChange, onSubmit } = props;
+
   return (
     <Header>
       <Header.GroupLeft>
@@ -11,7 +13,7 @@ export default function HeaderContainer() {
           src="/images/header/logo.svg"
           alt="GitHub"
         />
-        <Header.Input />
+        <Header.Input onChange={onChange} onSubmit={onSubmit} />
       </Header.GroupLeft>
     </Header>
   );

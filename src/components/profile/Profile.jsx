@@ -37,7 +37,11 @@ Profile.Name = function ProfileName(props) {
 Profile.Link = function ProfileLink(props) {
   const { children, href } = props;
 
-  return <Link href={href}>{children}</Link>;
+  return (
+    <Link href={href} target="_blank">
+      {children}
+    </Link>
+  );
 };
 
 Profile.Group = function ProfileGroup(props) {

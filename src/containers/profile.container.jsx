@@ -1,19 +1,21 @@
 import React from 'react';
 import { Profile } from '../components';
 
-export default function ProfileContainer() {
+export default function ProfileContainer(props) {
+  const { image, name, login, loginUrl, followers, following } = props;
+
   return (
     <Profile>
-      <Profile.Image src="images/profile/user.jpg" alt="User" />
+      <Profile.Image src={image} alt={login} />
       <Profile.Info>
-        <Profile.Name>Dan Abramov</Profile.Name>
-        <Profile.Link href="#">gaeron</Profile.Link>
+        <Profile.Name>{name}</Profile.Name>
+        <Profile.Link href={loginUrl}>{login}</Profile.Link>
         <Profile.Group>
           <Profile.Item src="images/profile/followers.svg" alt="Followers">
-            65.8k followers
+            {followers} followers
           </Profile.Item>
           <Profile.Item src="images/profile/following.svg" alt="Following">
-            171 following
+            {following} following
           </Profile.Item>
         </Profile.Group>
       </Profile.Info>

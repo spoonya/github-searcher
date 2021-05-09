@@ -3,6 +3,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import {
   Container,
   GroupLeft,
+  Form,
   Input,
   InputContainer,
   Logo,
@@ -31,11 +32,15 @@ Header.GroupLeft = function HeaderGroupLeft(props) {
   return <GroupLeft>{children}</GroupLeft>;
 };
 
-Header.Input = function HeaderInput() {
+Header.Input = function HeaderInput(props) {
+  const { onChange, onSubmit } = props;
+
   return (
-    <InputContainer>
-      <Icon src="/images/header/search.svg" alt="Search" />
-      <Input placeholder="Enter GitHub username" />
-    </InputContainer>
+    <Form onSubmit={onSubmit}>
+      <InputContainer>
+        <Icon src="/images/header/search.svg" alt="Search" />
+        <Input placeholder="Enter GitHub username" onChange={onChange} />
+      </InputContainer>
+    </Form>
   );
 };

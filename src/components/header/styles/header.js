@@ -1,6 +1,11 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.header`
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
   padding: 1.6rem 5.6rem 1.6rem 4.1rem;
 
   background-color: ${({ theme }) => theme.alpha};
@@ -29,6 +34,8 @@ export const Icon = styled.img`
 
   height: 1.4rem;
 `;
+
+export const Form = styled.form``;
 
 export const InputContainer = styled.div`
   position: relative;
