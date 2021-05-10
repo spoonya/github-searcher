@@ -2,26 +2,18 @@ import React from 'react';
 import { Repository } from '../components';
 import ReactPaginate from 'react-paginate';
 
-export default function RepositoryContainer() {
+export default function RepositoryContainer(props) {
+  const { repos, reposCount } = props;
+
   return (
     <Repository>
-      <Repository.Title>Repositories (249)</Repository.Title>
-      <Repository.Item>
-        <Repository.Link href="#">repo-name</Repository.Link>
-        <Repository.Description>Lorem, ipsum dolor.</Repository.Description>
-      </Repository.Item>
-      <Repository.Item>
-        <Repository.Link href="#">repo-name</Repository.Link>
-        <Repository.Description>Lorem, ipsum dolor.</Repository.Description>
-      </Repository.Item>
-      <Repository.Item>
-        <Repository.Link href="#">repo-name</Repository.Link>
-        <Repository.Description>Lorem, ipsum dolor.</Repository.Description>
-      </Repository.Item>
-      <Repository.Item>
-        <Repository.Link href="#">repo-name</Repository.Link>
-        <Repository.Description>Lorem, ipsum dolor.</Repository.Description>
-      </Repository.Item>
+      <Repository.Title>Repositories ({reposCount})</Repository.Title>
+      {repos.map((item) => (
+        <Repository.Item key={item.id}>
+          <Repository.Link href={item.html_url}>{item.name}</Repository.Link>
+          <Repository.Description>{item.description}</Repository.Description>
+        </Repository.Item>
+      ))}
       <ReactPaginate
         previousLabel={''}
         nextLabel={''}

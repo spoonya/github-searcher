@@ -11,7 +11,7 @@ export default function HeaderContainer(props) {
         <Header.Logo
           to={ROUTES.BROWSE}
           src="/images/header/logo.svg"
-          alt="GitHub"
+          alt="GitHub Browse Users"
         />
         <Header.Input onChange={onChange} onSubmit={onSubmit} />
       </Header.GroupLeft>

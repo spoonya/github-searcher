@@ -22,7 +22,11 @@ Repository.Item = function RepositoryItem(props) {
 Repository.Link = function RepositoryLink(props) {
   const { children, href } = props;
 
-  return <Link href={href}>{children}</Link>;
+  return (
+    <Link href={href} target="_blank">
+      {children}
+    </Link>
+  );
 };
 
 Repository.Description = function RepositoryDescription(props) {
