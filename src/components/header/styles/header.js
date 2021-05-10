@@ -35,13 +35,11 @@ export const Icon = styled.img`
   height: 1.4rem;
 `;
 
-export const Form = styled.form``;
-
-export const InputContainer = styled.div`
+export const Form = styled.form`
   position: relative;
 
-  width: 100%;
   max-width: 50rem;
+  width: 100%;
 `;
 
 export const Input = styled.input`

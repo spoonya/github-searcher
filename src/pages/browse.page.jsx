@@ -8,10 +8,23 @@ import { Container } from '../components';
 import sortReposByLastUpdate from '../helpers/sort-repos.helper';
 
 export default function Browse() {
-  const [login, setLogin] = useState('spoonya');
+  const [login, setLogin] = useState('thecherno');
+  const [repos, setRepos] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
   const [user, setUser] = useState({});
   const [query, setQuery] = useState('');
-  const [repos, setRepos] = useState([]);
+
+  const reposPerPage = 4;
+  const pagesiVisited = pageNum * reposPerPage;
+  const pageCount = Math.ceil(user.public_repos / reposPerPage);
+
+  function selectRepos() {
+    return repos.slice(pagesiVisited, pagesiVisited + reposPerPage);
+  }
+
+  function changePage({ selected }) {
+    setPageNum(selected);
+  }
 
   async function getUser() {
     const res = await fetch(`https://api.github.com/users/${login}`);
@@ -20,11 +33,12 @@ export default function Browse() {
   }
 
   function updateLogin(e) {
-    setLogin(e.target.value);
+    setLogin(e.target.value.trim());
   }
 
   function getLogin(e) {
     e.preventDefault();
+    setPageNum(0);
     setQuery(login);
   }
 
@@ -39,7 +53,7 @@ export default function Browse() {
       `https://api.github.com/users/${login}/repos?per_page=100`,
     );
     const data = await res.json();
-    setRepos(data);
+    setRepos(sortReposByLastUpdate(data));
   }
 
   return (
@@ -55,8 +69,11 @@ export default function Browse() {
           following={user.following}
         />
         <RepositoryContainer
-          repos={sortReposByLastUpdate(repos)}
+          repos={selectRepos()}
           reposCount={user.public_repos}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          forcePage={pageNum}
         />
       </Container>
     </>

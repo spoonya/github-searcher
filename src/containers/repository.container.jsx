@@ -3,7 +3,7 @@ import { Repository } from '../components';
 import ReactPaginate from 'react-paginate';
 
 export default function RepositoryContainer(props) {
-  const { repos, reposCount } = props;
+  const { repos, reposCount, pageCount, onPageChange, forcePage } = props;
 
   return (
     <Repository>
@@ -17,6 +17,9 @@ export default function RepositoryContainer(props) {
       <ReactPaginate
         previousLabel={''}
         nextLabel={''}
+        pageCount={pageCount}
+        onPageChange={onPageChange}
+        forcePage={forcePage}
         breakLabel={'...'}
         breakClassName={'break'}
         marginPagesDisplayed={1}
