@@ -1,15 +1,10 @@
 import React from 'react';
-import { Container, LockBody, ReleaseBody, Spinner } from './styles/loader';
+import { Container, Spinner } from './styles/loader';
 
-export default function Loader(props) {
+export default function Loader() {
   return (
     <Container>
-      <LockBody />
       <Spinner />
     </Container>
   );
 }
-
-Loader.ReleaseBody = function LoadingReleaseBody() {
-  return <ReleaseBody />;
-};

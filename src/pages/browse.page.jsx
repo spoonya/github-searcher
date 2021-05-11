@@ -39,7 +39,7 @@ export default function Browse() {
     setQuery(login);
     setPageNum(0);
     setRepos([]);
-    setUser('');
+    setUser({});
     setLoading(true);
   }
 
@@ -67,6 +67,7 @@ export default function Browse() {
   useEffect(() => {
     getUser();
     getRepos();
+    setLogin('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
@@ -78,11 +79,15 @@ export default function Browse() {
 
   return (
     <>
-      <HeaderContainer onChange={updateLogin} onSubmit={getLogin} />
+      <HeaderContainer
+        onChange={updateLogin}
+        onSubmit={getLogin}
+        value={login}
+      />
       <Container>
         {query ? (
           <>
-            {loading ? <Loader /> : <Loader.ReleaseBody />}
+            {loading ? <Loader /> : null}
             <ProfileContainer
               id={user.id}
               image={user.avatar_url}

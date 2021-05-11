@@ -2,7 +2,6 @@ import styled from 'styled-components/macro';
 
 export const Inner = styled.div`
   display: flex;
-  position: relative;
 
   min-height: 89vh;
   width: 128.4rem;

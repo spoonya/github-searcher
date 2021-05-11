@@ -1,8 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
 export const Container = styled.div`
   position: absolute;
-  top: 0;
+  top: 7.2rem;
   bottom: 0;
   left: 0;
   right: 0;
@@ -31,17 +31,5 @@ export const Spinner = styled.div`
     100% {
       transform: rotate(360deg);
     }
-  }
-`;
-
-export const LockBody = createGlobalStyle`
-  body {
-    overflow: hidden;
-  }
-`;
-
-export const ReleaseBody = createGlobalStyle`
-  body {
-    overflow: visible;
   }
 `;

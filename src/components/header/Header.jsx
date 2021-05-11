@@ -25,12 +25,16 @@ Header.GroupLeft = function HeaderGroupLeft(props) {
 };
 
 Header.Input = function HeaderInput(props) {
-  const { onChange, onSubmit } = props;
+  const { onChange, onSubmit, value } = props;
 
   return (
     <Form onSubmit={onSubmit}>
       <Icon src="/images/header/search.svg" alt="Search" />
-      <Input placeholder="Enter GitHub username" onChange={onChange} />
+      <Input
+        placeholder="Enter GitHub username"
+        onChange={onChange}
+        value={value}
+      />
     </Form>
   );
 };
