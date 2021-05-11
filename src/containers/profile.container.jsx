@@ -12,7 +12,9 @@ export default function ProfileContainer(props) {
         <Profile.Link href={loginUrl}>{login}</Profile.Link>
         <Profile.Group>
           <Profile.Item src="images/profile/followers.svg" alt="Followers">
-            {followers} followers
+            {followers === 1
+              ? `${followers} follower`
+              : `${followers} followers`}
           </Profile.Item>
           <Profile.Item src="images/profile/following.svg" alt="Following">
             {following} following

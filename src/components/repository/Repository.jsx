@@ -1,5 +1,13 @@
 import React from 'react';
-import { Container, Title, Item, Link, Description } from './styles/repository';
+import {
+  Container,
+  Title,
+  Item,
+  Link,
+  Description,
+  PaginationContainer,
+  PaginationRange,
+} from './styles/repository';
 
 export default function Repository(props) {
   const { children } = props;
@@ -33,4 +41,16 @@ Repository.Description = function RepositoryDescription(props) {
   const { children } = props;
 
   return <Description>{children}</Description>;
+};
+
+Repository.PaginationContainer = function RepositoryPaginationContainer(props) {
+  const { children } = props;
+
+  return <PaginationContainer>{children}</PaginationContainer>;
+};
+
+Repository.Range = function RepositoryRange(props) {
+  const { children } = props;
+
+  return <PaginationRange>{children}</PaginationRange>;
 };

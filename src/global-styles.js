@@ -78,9 +78,9 @@ const GlobalStyles = createGlobalStyle`
   /*React-paginate*/
   .pagination {
     display: flex;
-    justify-content: flex-end;
 
     padding-right: 2.2rem;
+    padding-left: 0;
 
     list-style: none;
 
@@ -156,10 +156,6 @@ const GlobalStyles = createGlobalStyle`
     content: url('../images/repository/arrow.svg');
 
     width: 14px;
-  }
-
-  .nextBtn {
-    transform: rotate(360deg);
   }
 
   .prevBtn:after {

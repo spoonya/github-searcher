@@ -1,35 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import {
   HeaderContainer,
+  InitialContainer,
+  NouserContainer,
   ProfileContainer,
   RepositoryContainer,
 } from '../containers';
 import { Container } from '../components';
 import sortReposByLastUpdate from '../helpers/sort-repos.helper';
+import prettifyNumber from '../helpers/prettify-number';
+import NoreposContainer from '../containers/norepos.container';
 
 export default function Browse() {
-  const [login, setLogin] = useState('thecherno');
+  const [login, setLogin] = useState('');
   const [repos, setRepos] = useState([]);
   const [pageNum, setPageNum] = useState(0);
   const [user, setUser] = useState({});
   const [query, setQuery] = useState('');
 
   const reposPerPage = 4;
-  const pagesiVisited = pageNum * reposPerPage;
+  const pagesVisited = pageNum * reposPerPage;
   const pageCount = Math.ceil(user.public_repos / reposPerPage);
 
-  function selectRepos() {
-    return repos.slice(pagesiVisited, pagesiVisited + reposPerPage);
-  }
-
-  function changePage({ selected }) {
-    setPageNum(selected);
-  }
-
   async function getUser() {
-    const res = await fetch(`https://api.github.com/users/${login}`);
-    const data = await res.json();
-    setUser(data);
+    if (login) {
+      const res = await fetch(`https://api.github.com/users/${login}`);
+      const data = await res.json();
+      setUser(data);
+    }
   }
 
   function updateLogin(e) {
@@ -38,8 +36,31 @@ export default function Browse() {
 
   function getLogin(e) {
     e.preventDefault();
-    setPageNum(0);
     setQuery(login);
+    setPageNum(0);
+    setRepos([]);
+    setUser('');
+  }
+
+  async function getRepos() {
+    if (login) {
+      const res = await fetch(
+        `https://api.github.com/users/${login}/repos?per_page=100`,
+      );
+      const data = await res.json();
+
+      if (data.length >= 1) {
+        setRepos(sortReposByLastUpdate(data));
+      }
+    }
+  }
+
+  function selectRepos() {
+    return repos.slice(pagesVisited, pagesVisited + reposPerPage);
+  }
+
+  function changePage({ selected }) {
+    setPageNum(selected);
   }
 
   useEffect(() => {
@@ -48,33 +69,48 @@ export default function Browse() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  async function getRepos() {
-    const res = await fetch(
-      `https://api.github.com/users/${login}/repos?per_page=100`,
-    );
-    const data = await res.json();
-    setRepos(sortReposByLastUpdate(data));
-  }
-
   return (
     <>
       <HeaderContainer onChange={updateLogin} onSubmit={getLogin} />
       <Container>
-        <ProfileContainer
-          image={user.avatar_url}
-          name={user.name}
-          login={user.login}
-          loginUrl={user.html_url}
-          followers={user.followers}
-          following={user.following}
-        />
-        <RepositoryContainer
-          repos={selectRepos()}
-          reposCount={user.public_repos}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          forcePage={pageNum}
-        />
+        {query ? (
+          <>
+            {user.id ? (
+              <>
+                <ProfileContainer
+                  image={user.avatar_url}
+                  name={user.name}
+                  login={user.login}
+                  loginUrl={user.html_url}
+                  followers={prettifyNumber(user.followers)}
+                  following={user.following}
+                />
+                {repos.length ? (
+                  <RepositoryContainer
+                    repos={selectRepos()}
+                    reposCount={user.public_repos}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    forcePage={pageNum}
+                    range={{
+                      from: pagesVisited + 1,
+                      to:
+                        user.public_repos < reposPerPage
+                          ? user.public_repos
+                          : pagesVisited + reposPerPage,
+                    }}
+                  />
+                ) : (
+                  <NoreposContainer />
+                )}
+              </>
+            ) : (
+              <NouserContainer />
+            )}
+          </>
+        ) : (
+          <InitialContainer />
+        )}
       </Container>
     </>
   );

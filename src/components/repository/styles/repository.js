@@ -33,3 +33,16 @@ export const Link = styled.a`
 `;
 
 export const Description = styled.p``;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const PaginationRange = styled.div`
+  color: ${({ theme }) => theme.omega};
+  font-size: 14px;
+
+  margin-right: 16px;
+`;

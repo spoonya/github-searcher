@@ -3,8 +3,7 @@ import styled from 'styled-components/macro';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  margin-right: 8.5rem;
+  width: 43%;
 `;
 
 export const Image = styled.img`
