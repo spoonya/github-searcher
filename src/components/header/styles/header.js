@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const Container = styled.header`
   position: sticky;
-  z-index: 10;
+  z-index: 9;
   top: 0;
   left: 0;
 

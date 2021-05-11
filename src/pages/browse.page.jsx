@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {
   HeaderContainer,
   InitialContainer,
-  NouserContainer,
   ProfileContainer,
   RepositoryContainer,
 } from '../containers';
 import { Container } from '../components';
 import sortReposByLastUpdate from '../helpers/sort-repos.helper';
 import prettifyNumber from '../helpers/prettify-number';
-import NoreposContainer from '../containers/norepos.container';
+import Loader from '../components/loader/Loader';
 
 export default function Browse() {
   const [login, setLogin] = useState('');
@@ -17,6 +16,7 @@ export default function Browse() {
   const [pageNum, setPageNum] = useState(0);
   const [user, setUser] = useState({});
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const reposPerPage = 4;
   const pagesVisited = pageNum * reposPerPage;
@@ -40,6 +40,7 @@ export default function Browse() {
     setPageNum(0);
     setRepos([]);
     setUser('');
+    setLoading(true);
   }
 
   async function getRepos() {
@@ -69,44 +70,43 @@ export default function Browse() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+  }, [user, repos]);
+
   return (
     <>
       <HeaderContainer onChange={updateLogin} onSubmit={getLogin} />
       <Container>
         {query ? (
           <>
-            {user.id ? (
-              <>
-                <ProfileContainer
-                  image={user.avatar_url}
-                  name={user.name}
-                  login={user.login}
-                  loginUrl={user.html_url}
-                  followers={prettifyNumber(user.followers)}
-                  following={user.following}
-                />
-                {repos.length ? (
-                  <RepositoryContainer
-                    repos={selectRepos()}
-                    reposCount={user.public_repos}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    forcePage={pageNum}
-                    range={{
-                      from: pagesVisited + 1,
-                      to:
-                        user.public_repos < reposPerPage
-                          ? user.public_repos
-                          : pagesVisited + reposPerPage,
-                    }}
-                  />
-                ) : (
-                  <NoreposContainer />
-                )}
-              </>
-            ) : (
-              <NouserContainer />
-            )}
+            {loading ? <Loader /> : <Loader.ReleaseBody />}
+            <ProfileContainer
+              id={user.id}
+              image={user.avatar_url}
+              name={user.name}
+              login={user.login}
+              loginUrl={user.html_url}
+              followers={prettifyNumber(user.followers)}
+              following={user.following}
+            />
+            <RepositoryContainer
+              id={user.id}
+              repos={selectRepos()}
+              reposCount={user.public_repos}
+              pageCount={pageCount}
+              onPageChange={changePage}
+              forcePage={pageNum}
+              range={{
+                from: pagesVisited + 1,
+                to:
+                  user.public_repos < reposPerPage
+                    ? user.public_repos
+                    : pagesVisited + reposPerPage,
+              }}
+            />
           </>
         ) : (
           <InitialContainer />

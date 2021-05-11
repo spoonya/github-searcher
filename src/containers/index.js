@@ -3,3 +3,4 @@ export { default as ProfileContainer } from './profile.container';
 export { default as RepositoryContainer } from './repository.container';
 export { default as InitialContainer } from './init.container';
 export { default as NouserContainer } from './nouser.container';
+export { default as NoreposContainer } from './norepos.container';
