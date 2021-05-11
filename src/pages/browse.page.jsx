@@ -44,15 +44,22 @@ export default function Browse() {
   }
 
   async function getRepos() {
-    if (login) {
-      const res = await fetch(
-        `https://api.github.com/users/${login}/repos?per_page=100`,
-      );
-      const data = await res.json();
+    if (!login) return;
 
-      if (data.length >= 1) {
-        setRepos(sortReposByLastUpdate(data));
-      }
+    let data = [];
+    let dataFull = [];
+    let page = 1;
+
+    do {
+      const res = await fetch(
+        `https://api.github.com/users/${login}/repos?page=${page++}&per_page=100`,
+      );
+      data = await res.json();
+      dataFull = dataFull.concat(data);
+    } while (data.length);
+
+    if (dataFull.length) {
+      setRepos(sortReposByLastUpdate(dataFull));
     }
   }
 

@@ -1,11 +1,23 @@
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
-import { Container, GroupLeft, Form, Input, Logo, Icon } from './styles/header';
+import {
+  Container,
+  Inner,
+  GroupLeft,
+  Form,
+  Input,
+  Logo,
+  Icon,
+} from './styles/header';
 
 export default function Header(props) {
   const { children } = props;
 
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <Inner>{children}</Inner>
+    </Container>
+  );
 }
 
 Header.Logo = function HeaderLogo(props) {

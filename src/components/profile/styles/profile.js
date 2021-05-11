@@ -35,6 +35,9 @@ export const Info = styled.div`
 `;
 
 export const Name = styled.p`
+  max-width: 30rem;
+  width: 100%;
+
   margin-bottom: 1.2rem;
 
   font-weight: 600;

@@ -1,13 +1,16 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.header`
-  padding: 1.6rem 5.6rem 1.6rem 4.1rem;
+  padding: 1.6rem 0;
 
   background-color: ${({ theme }) => theme.alpha};
+`;
 
-  @media only screen and (max-width: 480px) {
-    padding: 1.6rem 3.6rem 1.6rem 2.1rem;
-  }
+export const Inner = styled.div`
+  max-width: 100%;
+  width: 1315px;
+  padding: 0 15px;
+  margin: 0 auto;
 `;
 
 export const GroupLeft = styled.div`
