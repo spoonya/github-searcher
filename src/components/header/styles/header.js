@@ -1,14 +1,13 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.header`
-  position: sticky;
-  z-index: 9;
-  top: 0;
-  left: 0;
-
   padding: 1.6rem 5.6rem 1.6rem 4.1rem;
 
   background-color: ${({ theme }) => theme.alpha};
+
+  @media only screen and (max-width: 480px) {
+    padding: 1.6rem 3.6rem 1.6rem 2.1rem;
+  }
 `;
 
 export const GroupLeft = styled.div`
@@ -22,6 +21,7 @@ export const GroupLeft = styled.div`
 
 export const Logo = styled.img`
   vertical-align: middle;
+  max-width: 40px;
 `;
 
 export const Icon = styled.img`
@@ -52,5 +52,5 @@ export const Input = styled.input`
 
   border-radius: 6px;
 
-  font-size: 1.4rem;
+  font-size: 14px;
 `;

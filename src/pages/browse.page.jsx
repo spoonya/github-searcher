@@ -69,13 +69,13 @@ export default function Browse() {
     getRepos();
     setLogin('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+  }, [query, user]);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1500);
-  }, [user, repos]);
+  }, [repos]);
 
   return (
     <>

@@ -8,4 +8,10 @@ export const Inner = styled.div`
   max-width: 100%;
   margin: 0 auto;
   padding: 4rem 1.5rem 2.8rem;
+
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;

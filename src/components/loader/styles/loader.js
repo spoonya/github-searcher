@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const Container = styled.div`
   position: absolute;
-  top: 7.2rem;
+  top: 80px;
   bottom: 0;
   left: 0;
   right: 0;

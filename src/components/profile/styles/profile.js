@@ -3,11 +3,22 @@ import styled from 'styled-components/macro';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
   width: 43%;
+
+  @media only screen and (max-width: 991px) {
+    width: 60%;
+  }
+
+  @media only screen and (max-width: 767px) {
+    align-items: center;
+
+    width: 100%;
+    margin-bottom: 3rem;
+  }
 `;
 
 export const Image = styled.img`
-  max-height: 28.1rem;
   max-width: 28rem;
   margin-bottom: 2.8rem;
 
@@ -17,6 +28,10 @@ export const Image = styled.img`
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 767px) {
+    align-items: center;
+  }
 `;
 
 export const Name = styled.p`

@@ -11,6 +11,10 @@ const GlobalStyles = createGlobalStyle`
     font-size: 62.5%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    @media only screen and (max-width: 1199px) {
+      font-size: 55%;
+    }
   }
 
   body {
@@ -78,6 +82,7 @@ const GlobalStyles = createGlobalStyle`
   /*React-paginate*/
   .pagination {
     display: flex;
+    align-items: center;
 
     padding-right: 2.2rem;
     padding-left: 0;
@@ -92,6 +97,10 @@ const GlobalStyles = createGlobalStyle`
     .active {
       color:  ${({ theme }) => theme.beta};
     }
+
+    @media only screen and (max-width: 991px) {
+      padding-right: 0;
+    }
   }
 
   .active {
@@ -100,7 +109,7 @@ const GlobalStyles = createGlobalStyle`
 
   .pageBtnWrapper {
     &:not(:last-child) {
-      margin-right: 16px;
+      margin-right: 1.6rem;
     }
 
     border-radius: 3px;
@@ -109,14 +118,14 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .pageBtn {
-    padding: 6px;
+    padding: .6rem;
   }
 
   .break {
     display: flex;
     align-items: flex-end;
 
-    padding-right: 16px;
+    padding-right: 1.6rem;
 
     cursor: pointer;
 
@@ -130,7 +139,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .nextBtn, .prevBtn {
-    padding: 6px;
+    padding: 0 .6rem;
     vertical-align: middle;
 
     cursor: pointer;
@@ -141,7 +150,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .prevBtn {
-    margin-right: 16px;
+    margin-right: 1.3rem;
   }
 
   .nextBtn, .prevBtn, .pageBtn {
@@ -153,13 +162,16 @@ const GlobalStyles = createGlobalStyle`
   .nextBtn::after, .prevBtn::after {
     display: inline-block;
 
-    content: url('../images/repository/arrow.svg');
-
     width: 14px;
   }
 
+  .nextBtn::after {
+      content: url('../images/repository/arrow-next.svg');
+
+  }
+
   .prevBtn:after {
-    transform: rotate(-180deg);
+    content: url('../images/repository/arrow-prev.svg');
   }
 `;
 

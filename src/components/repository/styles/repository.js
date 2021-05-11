@@ -6,6 +6,10 @@ export const Container = styled.div`
 
   max-width: 87.7rem;
   width: 100%;
+
+  @media only screen and (max-width: 991px) {
+    max-width: 100%;
+  }
 `;
 
 export const Title = styled.h2`
@@ -38,6 +42,10 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  @media only screen and (max-width: 575px) {
+    flex-direction: column;
+  }
 `;
 
 export const PaginationRange = styled.div`
@@ -45,4 +53,9 @@ export const PaginationRange = styled.div`
   font-size: 14px;
 
   margin-right: 16px;
+
+  @media only screen and (max-width: 575px) {
+    margin-right: 0;
+    order: 1;
+  }
 `;
