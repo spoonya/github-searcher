@@ -119,6 +119,8 @@ export default function Browse() {
                 to:
                   user.public_repos < reposPerPage
                     ? user.public_repos
+                    : pagesVisited + reposPerPage > user.public_repos
+                    ? user.public_repos
                     : pagesVisited + reposPerPage,
               }}
             />
