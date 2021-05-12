@@ -23,10 +23,14 @@ export default function Browse() {
   const pageCount = Math.ceil(user.public_repos / reposPerPage);
 
   async function getUser() {
-    if (login) {
+    if (!login) return;
+
+    try {
       const res = await fetch(`https://api.github.com/users/${login}`);
       const data = await res.json();
       setUser(data);
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -50,13 +54,18 @@ export default function Browse() {
     let dataFull = [];
     let page = 1;
 
-    do {
-      const res = await fetch(
-        `https://api.github.com/users/${login}/repos?page=${page++}&per_page=100`,
-      );
-      data = await res.json();
-      dataFull = dataFull.concat(data);
-    } while (data.length);
+    try {
+      do {
+        const res = await fetch(
+          `https://api.github.com/users/${login}/repos?page=${page++}&per_page=100`,
+        );
+        data = await res.json();
+        dataFull = dataFull.concat(data);
+      } while (data.length);
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
 
     if (dataFull.length) {
       setRepos(sortReposByLastUpdate(dataFull));
@@ -77,12 +86,6 @@ export default function Browse() {
     setLogin('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, user]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-  }, [repos]);
 
   return (
     <>

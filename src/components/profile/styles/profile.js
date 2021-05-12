@@ -31,6 +31,7 @@ export const Info = styled.div`
 
   @media only screen and (max-width: 767px) {
     align-items: center;
+    text-align: center;
   }
 `;
 
