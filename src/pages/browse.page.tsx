@@ -31,11 +31,11 @@ export default function Browse() {
     setPageNum(selectedItem.selected);
   }
 
-  function updateLogin(e: React.FormEvent<HTMLInputElement>) {
-    setLogin(e.currentTarget.value.trim());
+  function updateLogin(e: React.ChangeEvent<HTMLInputElement>) {
+    setLogin(e.target.value.trim());
   }
 
-  function getLogin(e: React.FormEvent<HTMLInputElement>) {
+  function getLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setQuery(login);
     setPageNum(0);

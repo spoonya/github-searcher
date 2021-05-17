@@ -9,7 +9,7 @@ export type HeaderLogo = {
 };
 
 export type HeaderInput = {
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   value: string;
 };
