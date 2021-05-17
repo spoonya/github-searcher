@@ -2,7 +2,7 @@ import { Repository } from '../api.type';
 
 type RepositoryTypes = {
   id: number;
-  repos: Repository[];
+  repos: Repository[] | null;
   reposCount: number;
   pageCount: number;
   onPageChange: (selectedItem: { selected: number }) => void;

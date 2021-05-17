@@ -16,14 +16,14 @@ export default function RepositoryContainer(props: RepositoryTypes) {
 
   return (
     <>
-      {id && !repos.length ? (
+      {id && !repos?.length ? (
         <NoreposContainer />
       ) : (
         <>
-          {id && repos.length ? (
+          {id && repos!.length ? (
             <Repository>
               <Repository.Title>Repositories ({reposCount})</Repository.Title>
-              {repos.map((rep) => (
+              {repos!.map((rep) => (
                 <Repository.Item key={rep.id}>
                   <Repository.Link href={rep.html_url}>
                     {rep.name}

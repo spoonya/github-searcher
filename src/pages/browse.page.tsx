@@ -23,8 +23,12 @@ export default function Browse() {
     user ? user!.public_repos / reposPerPage : 0,
   );
 
-  function selectRepos(): ApiTypes.Repository[] {
-    return repos!.slice(pagesVisited, pagesVisited + reposPerPage);
+  function selectRepos(): ApiTypes.Repository[] | null {
+    if (repos?.length) {
+      return repos!.slice(pagesVisited, pagesVisited + reposPerPage);
+    }
+
+    return null;
   }
 
   function changePage(selectedItem: { selected: number }) {
@@ -110,7 +114,7 @@ export default function Browse() {
                 following={prettifyNumber(user!.following)}
               />
             )}
-            {user && repos && (
+            {user && (
               <RepositoryContainer
                 id={user!.id}
                 repos={selectRepos()}
