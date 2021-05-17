@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Container,
   Image,
@@ -9,32 +8,33 @@ import {
   Item,
   Icon,
 } from './styles/profile';
+import { ProfileTypes } from '../../types/components';
 
-export default function Profile(props) {
+export default function Profile(props: ProfileTypes.Profile) {
   const { children } = props;
 
   return <Container>{children}</Container>;
 }
 
-Profile.Image = function ProfileImage(props) {
+Profile.Image = function ProfileImage(props: ProfileTypes.ProfileImage) {
   const { src, alt } = props;
 
   return <Image src={src} alt={alt} />;
 };
 
-Profile.Info = function ProfileInfo(props) {
+Profile.Info = function ProfileInfo(props: ProfileTypes.Profile) {
   const { children } = props;
 
   return <Info>{children}</Info>;
 };
 
-Profile.Name = function ProfileName(props) {
+Profile.Name = function ProfileName(props: ProfileTypes.Profile) {
   const { children } = props;
 
   return <Name>{children}</Name>;
 };
 
-Profile.Link = function ProfileLink(props) {
+Profile.Link = function ProfileLink(props: ProfileTypes.ProfileLink) {
   const { children, href } = props;
 
   return (
@@ -44,13 +44,13 @@ Profile.Link = function ProfileLink(props) {
   );
 };
 
-Profile.Group = function ProfileGroup(props) {
+Profile.Group = function ProfileGroup(props: ProfileTypes.Profile) {
   const { children } = props;
 
   return <Group>{children}</Group>;
 };
 
-Profile.Item = function ProfileItem(props) {
+Profile.Item = function ProfileItem(props: ProfileTypes.ProfileItem) {
   const { children, src, alt } = props;
 
   return (

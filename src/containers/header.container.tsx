@@ -1,8 +1,8 @@
-import React from 'react';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes.constant';
+import { HeaderTypes } from '../types/components';
 
-export default function HeaderContainer(props) {
+export default function HeaderContainer(props: HeaderTypes.HeaderInput) {
   const { onChange, onSubmit, value } = props;
 
   return (

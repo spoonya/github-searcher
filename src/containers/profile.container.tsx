@@ -1,8 +1,8 @@
-import React from 'react';
 import { Profile } from '../components';
 import NouserContainer from './nouser.container';
+import ProfileProps from '../types/containers/profile.type';
 
-export default function ProfileContainer(props) {
+export default function ProfileContainer(props: ProfileProps) {
   const { id, image, name, login, loginUrl, followers, following } = props;
 
   return (

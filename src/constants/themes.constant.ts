@@ -1,4 +1,6 @@
-export const LIGHT_THEME = {
+import ThemeTypes from '../types/theme.type';
+
+export const LIGHT_THEME: ThemeTypes = {
   alpha: '#0064eb',
   beta: '#fff',
   gamma: '#000',

@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import ThemeTypes from './types/theme.type';
 
-const GlobalStyles = createGlobalStyle`
+type Props = {
+  theme: ThemeTypes;
+};
+
+const GlobalStyles = createGlobalStyle<Props>`
   *,
   *::before,
   *::after {

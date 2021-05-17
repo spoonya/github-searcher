@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import {
   Container,
@@ -9,8 +8,9 @@ import {
   Logo,
   Icon,
 } from './styles/header';
+import { HeaderTypes } from '../../types/components';
 
-export default function Header(props) {
+export default function Header(props: HeaderTypes.Header) {
   const { children } = props;
 
   return (
@@ -20,7 +20,7 @@ export default function Header(props) {
   );
 }
 
-Header.Logo = function HeaderLogo(props) {
+Header.Logo = function HeaderLogo(props: HeaderTypes.HeaderLogo) {
   const { to, src, alt } = props;
 
   return (
@@ -30,13 +30,13 @@ Header.Logo = function HeaderLogo(props) {
   );
 };
 
-Header.GroupLeft = function HeaderGroupLeft(props) {
+Header.GroupLeft = function HeaderGroupLeft(props: HeaderTypes.Header) {
   const { children } = props;
 
   return <GroupLeft>{children}</GroupLeft>;
 };
 
-Header.Input = function HeaderInput(props) {
+Header.Input = function HeaderInput(props: HeaderTypes.HeaderInput) {
   const { onChange, onSubmit, value } = props;
 
   return (

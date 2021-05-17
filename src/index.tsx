@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import 'normalize.css';
 import { ThemeProvider } from 'styled-components';
@@ -10,7 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={LIGHT_THEME}>
       <GlobalStyles />
-      <App />
+      <Router>
+        <App />
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),

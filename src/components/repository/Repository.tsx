@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Container,
   Title,
@@ -8,26 +7,29 @@ import {
   PaginationContainer,
   PaginationRange,
 } from './styles/repository';
+import { RepositoryTypes } from '../../types/components';
 
-export default function Repository(props) {
+export default function Repository(props: RepositoryTypes.Repository) {
   const { children } = props;
 
   return <Container>{children}</Container>;
 }
 
-Repository.Title = function RepositoryTitle(props) {
+Repository.Title = function RepositoryTitle(props: RepositoryTypes.Repository) {
   const { children } = props;
 
   return <Title>{children}</Title>;
 };
 
-Repository.Item = function RepositoryItem(props) {
+Repository.Item = function RepositoryItem(props: RepositoryTypes.Repository) {
   const { children } = props;
 
   return <Item>{children}</Item>;
 };
 
-Repository.Link = function RepositoryLink(props) {
+Repository.Link = function RepositoryLink(
+  props: RepositoryTypes.RepositoryLink,
+) {
   const { children, href } = props;
 
   return (
@@ -37,19 +39,23 @@ Repository.Link = function RepositoryLink(props) {
   );
 };
 
-Repository.Description = function RepositoryDescription(props) {
+Repository.Description = function RepositoryDescription(
+  props: RepositoryTypes.Repository,
+) {
   const { children } = props;
 
   return <Description>{children}</Description>;
 };
 
-Repository.PaginationContainer = function RepositoryPaginationContainer(props) {
+Repository.PaginationContainer = function RepositoryPaginationContainer(
+  props: RepositoryTypes.Repository,
+) {
   const { children } = props;
 
   return <PaginationContainer>{children}</PaginationContainer>;
 };
 
-Repository.Range = function RepositoryRange(props) {
+Repository.Range = function RepositoryRange(props: RepositoryTypes.Repository) {
   const { children } = props;
 
   return <PaginationRange>{children}</PaginationRange>;

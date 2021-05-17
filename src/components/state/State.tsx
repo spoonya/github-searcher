@@ -1,7 +1,7 @@
-import React from 'react';
 import { Container, Inner, Text, Image } from './styles/state';
+import { StateTypes } from '../../types/components';
 
-export default function State(props) {
+export default function State(props: StateTypes.State) {
   const { children } = props;
 
   return (
@@ -11,13 +11,13 @@ export default function State(props) {
   );
 }
 
-State.Image = function InitImage(props) {
+State.Image = function StateImage(props: StateTypes.StateImage) {
   const { src, alt } = props;
 
   return <Image src={src} alt={alt} />;
 };
 
-State.Text = function InitText(props) {
+State.Text = function StateText(props: StateTypes.State) {
   const { children } = props;
 
   return <Text>{children}</Text>;
