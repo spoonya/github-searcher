@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   HeaderContainer,
   InitialContainer,
@@ -11,12 +11,13 @@ import { sortReposByLastUpdate, prettifyNumber } from '../helpers';
 
 export default function Browse() {
   const [login, setLogin] = useState('');
-  const [repos, setRepos] = useState<ApiTypes.Repository[] | null>();
+  const [repos, setRepos] = useState<ApiTypes.Repository[] | null>(null);
   const [pageNum, setPageNum] = useState(0);
-  const [user, setUser] = useState<ApiTypes.User | null>();
+  const [user, setUser] = useState<ApiTypes.User | null>(null);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const prevLogin = usePrevious(query);
   const reposPerPage: number = 4;
   const pagesVisited: number = pageNum * reposPerPage;
   const pageCount: number = Math.ceil(
@@ -41,11 +42,14 @@ export default function Browse() {
 
   function getLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setQuery(login);
-    setPageNum(0);
-    setRepos(null);
-    setUser(null);
-    setLoading(true);
+
+    if (prevLogin !== login) {
+      setQuery(login);
+      setPageNum(0);
+      setRepos(null);
+      setUser(null);
+      setLoading(true);
+    }
   }
 
   async function getUser() {
@@ -75,7 +79,6 @@ export default function Browse() {
         data = await res.json();
         dataFull = dataFull.concat(data);
       } while (data.length);
-      setLoading(false);
     } catch (e) {
       throw new Error(e.message);
     }
@@ -83,14 +86,24 @@ export default function Browse() {
     if (dataFull.length) {
       setRepos(sortReposByLastUpdate(dataFull));
     }
+
+    setLoading(false);
+  }
+
+  function usePrevious(value: string): string {
+    const ref = useRef('');
+
+    useEffect(() => {
+      ref.current = value;
+    }, [value]);
+    return ref.current;
   }
 
   useEffect(() => {
     getUser();
     getRepos();
-    setLogin('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, user]);
+  }, [query]);
 
   return (
     <>

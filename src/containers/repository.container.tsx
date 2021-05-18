@@ -20,7 +20,7 @@ export default function RepositoryContainer(props: RepositoryTypes) {
         <NoreposContainer />
       ) : (
         <>
-          {id && repos!.length ? (
+          {id && repos?.length ? (
             <Repository>
               <Repository.Title>Repositories ({reposCount})</Repository.Title>
               {repos!.map((rep) => (
