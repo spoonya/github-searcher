@@ -23,6 +23,10 @@ export const Image = styled.img`
   margin-bottom: 2.8rem;
 
   border-radius: 50%;
+
+  @media only screen and (max-width: 767px) {
+    max-width: 20rem;
+  }
 `;
 
 export const Info = styled.div`

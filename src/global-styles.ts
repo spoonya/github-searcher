@@ -135,8 +135,6 @@ const GlobalStyles = createGlobalStyle<Props>`
     cursor: pointer;
 
     a {
-      padding-bottom: 6px;
-
       &:hover {
         text-decoration: none;
       }
