@@ -11,6 +11,7 @@ type RepositoryTypes = {
     from: number;
     to: number;
   };
+  isLoading: boolean;
 };
 
 export default RepositoryTypes;

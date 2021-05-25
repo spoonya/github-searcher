@@ -7,7 +7,7 @@ import {
 } from '../containers';
 import * as ApiTypes from '../types/api.type';
 import { Container, Loader } from '../components';
-import { sortReposByLastUpdate, prettifyNumber } from '../helpers';
+import { prettifyNumber } from '../helpers';
 
 export default function Browse() {
   const [login, setLogin] = useState('');
@@ -23,14 +23,6 @@ export default function Browse() {
   const pageCount: number = Math.ceil(
     user ? user!.public_repos / reposPerPage : 0,
   );
-
-  function selectRepos(): ApiTypes.Repository[] | null {
-    if (repos?.length) {
-      return repos!.slice(pagesVisited, pagesVisited + reposPerPage);
-    }
-
-    return null;
-  }
 
   function changePage(selectedItem: { selected: number }) {
     setPageNum(selectedItem.selected);
@@ -68,26 +60,25 @@ export default function Browse() {
     if (!login) return;
 
     let data: ApiTypes.Repository[] = [];
-    let dataFull: ApiTypes.Repository[] = [];
-    let page: number = 1;
 
     try {
-      do {
-        const res = await fetch(
-          `https://api.github.com/users/${login}/repos?page=${page++}&per_page=100`,
-        );
-        data = await res.json();
-        dataFull = dataFull.concat(data);
-      } while (data.length);
+      const res = await fetch(
+        `https://api.github.com/users/${login}/repos?page=${
+          pageNum + 1
+        }&per_page=4&sort=updated_at`,
+      );
+      data = await res.json();
     } catch (e) {
       throw new Error(e.message);
     }
 
-    if (dataFull.length) {
-      setRepos(sortReposByLastUpdate(dataFull));
+    if (data.length) {
+      setRepos(data);
     }
 
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
   }
 
   function usePrevious(value: string): string {
@@ -104,6 +95,12 @@ export default function Browse() {
     getRepos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+
+  useEffect(() => {
+    setLoading(true);
+    getRepos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNum]);
 
   return (
     <>
@@ -130,7 +127,7 @@ export default function Browse() {
             {user && (
               <RepositoryContainer
                 id={user!.id}
-                repos={selectRepos()}
+                repos={repos}
                 reposCount={user!.public_repos}
                 pageCount={pageCount}
                 onPageChange={changePage}
@@ -144,6 +141,7 @@ export default function Browse() {
                       ? user!.public_repos
                       : pagesVisited + reposPerPage,
                 }}
+                isLoading={loading}
               />
             )}
           </>

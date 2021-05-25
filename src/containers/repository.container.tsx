@@ -12,6 +12,7 @@ export default function RepositoryContainer(props: RepositoryTypes) {
     onPageChange,
     forcePage,
     range,
+    isLoading,
   } = props;
 
   return (
@@ -20,7 +21,7 @@ export default function RepositoryContainer(props: RepositoryTypes) {
         <NoreposContainer />
       ) : (
         <>
-          {id && repos?.length ? (
+          {id && repos?.length && !isLoading ? (
             <Repository>
               <Repository.Title>Repositories ({reposCount})</Repository.Title>
               {repos!.map((rep) => (
