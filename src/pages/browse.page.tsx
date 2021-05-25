@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from 'react';
 import {
   HeaderContainer,
@@ -93,13 +94,11 @@ export default function Browse() {
   useEffect(() => {
     getUser();
     getRepos();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   useEffect(() => {
     setLoading(true);
     getRepos();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum]);
 
   return (

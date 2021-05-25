@@ -1,18 +1,18 @@
 export type User = {
-  id: number;
-  avatar_url: string;
-  name: string;
-  login: string;
-  html_url: string;
-  public_repos: number;
-  followers: number | string;
-  following: number | string;
+  readonly id: number;
+  readonly avatar_url: string;
+  readonly name: string;
+  readonly login: string;
+  readonly html_url: string;
+  readonly public_repos: number;
+  readonly followers: number;
+  readonly following: number;
 };
 
 export type Repository = {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  pushed_at: string;
+  readonly id: number;
+  readonly name: string;
+  readonly description: string;
+  readonly html_url: string;
+  readonly pushed_at: string;
 };

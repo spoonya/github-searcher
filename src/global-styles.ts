@@ -120,10 +120,20 @@ const GlobalStyles = createGlobalStyle<Props>`
     border-radius: 3px;
 
     cursor: pointer;
+
+    @media only screen and (max-width: 480px) {
+      &:not(:last-child) {
+        margin-right: 1.2rem;
+      }
+    }
   }
 
   .pageBtn {
     padding: .6rem;
+
+     @media only screen and (max-width: 480px) {
+        padding: .4rem;
+     }
   }
 
   .break {
