@@ -1,9 +1,16 @@
 import styled from 'styled-components/macro';
 
-export const Container = styled.div`
+type ContainerProps = {
+  fullHeight?: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${({ fullHeight }: ContainerProps) =>
+    fullHeight && `height: calc(100vh - 14rem);`}
 
   width: 100%;
 `;

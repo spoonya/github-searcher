@@ -12,6 +12,10 @@ export const Container = styled.div`
   }
 `;
 
+export const Inner = styled.div`
+  position: relative;
+`;
+
 export const Title = styled.h2`
   margin-bottom: 2.9rem;
 

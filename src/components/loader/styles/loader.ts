@@ -1,8 +1,13 @@
 import styled from 'styled-components/macro';
 
-export const Container = styled.div`
+type ContainerProps = {
+  fullHeight?: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
   position: absolute;
-  top: 80px;
+  top: 8rem;
+  ${({ fullHeight }: ContainerProps) => fullHeight && `top: 0;`}
   bottom: 0;
   left: 0;
   right: 0;

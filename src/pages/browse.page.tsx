@@ -17,7 +17,8 @@ export default function Browse() {
   const [pageNum, setPageNum] = useState(0);
   const [user, setUser] = useState<TApi.User | null>(null);
   const [query, setQuery] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loadingRepos, setLoadingRepos] = useState(true);
+  const [loadingProfile, setLoadingProfile] = useState(true);
 
   const prevLogin: string = usePrevious(query);
   const reposPerPage: number = 4;
@@ -25,6 +26,7 @@ export default function Browse() {
   const pageCount: number = Math.ceil(
     user ? user!.public_repos / reposPerPage : 0,
   );
+  const unmountDelay: number = 200;
 
   function changePage(selectedItem: { selected: number }) {
     setPageNum(selectedItem.selected);
@@ -38,11 +40,12 @@ export default function Browse() {
     e.preventDefault();
 
     if (prevLogin !== login) {
+      setLoadingProfile(true);
+      setLoadingRepos(true);
       setQuery(login);
       setPageNum(0);
       setRepos(null);
       setUser(null);
-      setLoading(true);
     }
   }
 
@@ -56,6 +59,10 @@ export default function Browse() {
     } catch (e) {
       console.log(e.message);
     }
+
+    setTimeout(() => {
+      setLoadingProfile(false);
+    }, unmountDelay);
   }
 
   async function getRepos() {
@@ -79,8 +86,8 @@ export default function Browse() {
     }
 
     setTimeout(() => {
-      setLoading(false);
-    }, 200);
+      setLoadingRepos(false);
+    }, unmountDelay);
   }
 
   useEffect(() => {
@@ -89,7 +96,7 @@ export default function Browse() {
   }, [query]);
 
   useEffect(() => {
-    setLoading(true);
+    setLoadingRepos(true);
     getRepos();
   }, [pageNum]);
 
@@ -103,7 +110,7 @@ export default function Browse() {
       <Container>
         {query ? (
           <>
-            {loading ? <Loader /> : null}
+            {loadingProfile ? <Loader /> : null}
             {user && (
               <ProfileContainer
                 id={user!.id}
@@ -132,7 +139,7 @@ export default function Browse() {
                       ? user!.public_repos
                       : pagesVisited + reposPerPage,
                 }}
-                isLoading={loading}
+                isLoading={loadingRepos}
               />
             )}
           </>

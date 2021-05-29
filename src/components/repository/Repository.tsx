@@ -1,5 +1,6 @@
 import {
   Container,
+  Inner,
   Title,
   Item,
   Link,
@@ -14,6 +15,12 @@ export default function Repository(props: TRepository.Inner) {
 
   return <Container>{children}</Container>;
 }
+
+Repository.Inner = function RepositoryInner(props: TRepository.Inner) {
+  const { children } = props;
+
+  return <Inner>{children}</Inner>;
+};
 
 Repository.Title = function RepositoryTitle(props: TRepository.Inner) {
   const { children } = props;

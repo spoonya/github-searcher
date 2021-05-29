@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes.constant';
 import { THeader } from '../types/components';
-import { ThemesContext } from '../App';
+import { ThemesContext } from '../context';
 
 export default function HeaderContainer(props: THeader.Input) {
   const { onChange, onSubmit, value } = props;

@@ -1,5 +1,6 @@
-import { Repository } from '../components';
 import ReactPaginate from 'react-paginate';
+
+import { Repository, Loader } from '../components';
 import { NoreposContainer } from '.';
 import TRepository from '../types/containers/repository.type';
 
@@ -21,19 +22,22 @@ export default function RepositoryContainer(props: TRepository) {
         <NoreposContainer />
       ) : (
         <>
-          {id && repos?.length && !isLoading ? (
+          {id && repos?.length ? (
             <Repository>
               <Repository.Title>Repositories ({reposCount})</Repository.Title>
-              {repos!.map((rep) => (
-                <Repository.Item key={rep.id}>
-                  <Repository.Link href={rep.html_url}>
-                    {rep.name}
-                  </Repository.Link>
-                  <Repository.Description>
-                    {rep.description}
-                  </Repository.Description>
-                </Repository.Item>
-              ))}
+              <Repository.Inner>
+                {isLoading ? <Loader fullHeight /> : null}
+                {repos!.map((rep) => (
+                  <Repository.Item key={rep.id}>
+                    <Repository.Link href={rep.html_url}>
+                      {rep.name}
+                    </Repository.Link>
+                    <Repository.Description>
+                      {rep.description}
+                    </Repository.Description>
+                  </Repository.Item>
+                ))}
+              </Repository.Inner>
               <Repository.PaginationContainer>
                 <Repository.Range>
                   {`${range.from} - ${range.to} of ${reposCount} ${

@@ -1,4 +1,3 @@
-import { createContext } from 'react';
 import { Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -9,10 +8,9 @@ import {
   THEME_DARK,
   THEME_CFG,
 } from './constants/themes.constant';
+import { ThemesContext } from './context';
 import { Browse } from './pages';
 import { useThemes } from './hooks';
-
-export const ThemesContext = createContext<any>(null);
 
 function App() {
   const [theme, toggleTheme] = useThemes();

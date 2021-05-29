@@ -1,8 +1,12 @@
 import { Container, Spinner } from './styles/loader';
 
-export default function Loader() {
+type Props = {
+  fullHeight?: boolean;
+};
+
+export default function Loader({ fullHeight }: Props) {
   return (
-    <Container>
+    <Container fullHeight={fullHeight}>
       <Spinner />
     </Container>
   );
