@@ -31,9 +31,9 @@ export const Item = styled.div`
 export const Link = styled.a`
   margin-bottom: 1.6rem;
 
+  color: ${({ theme }) => theme.link};
   font-weight: 500;
   font-size: 2.4rem;
-  color: ${({ theme }) => theme.alpha};
 `;
 
 export const Description = styled.p``;

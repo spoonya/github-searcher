@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
-import ThemeTypes from './types/theme.type';
+import TTheme from './types/theme.type';
 
 type Props = {
-  theme: ThemeTypes;
+  theme: TTheme;
 };
 
 const GlobalStyles = createGlobalStyle<Props>`
@@ -56,6 +56,7 @@ const GlobalStyles = createGlobalStyle<Props>`
   }
 
   img {
+    display: block;
     max-width: 100%;
     height: auto;
   }
@@ -100,7 +101,7 @@ const GlobalStyles = createGlobalStyle<Props>`
     user-select: none;
 
     .active {
-      color:  ${({ theme }) => theme.beta};
+      color:  ${({ theme }) => theme.pagLinkActive};
     }
 
     @media only screen and (max-width: 991px) {
@@ -179,8 +180,7 @@ const GlobalStyles = createGlobalStyle<Props>`
   }
 
   .nextBtn::after {
-      content: url('../images/repository/arrow-next.svg');
-
+    content: url('../images/repository/arrow-next.svg');
   }
 
   .prevBtn:after {

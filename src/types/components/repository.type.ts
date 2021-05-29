@@ -1,8 +1,8 @@
-export type Repository = {
+export type Inner = {
   children: React.ReactNode;
 };
 
-export type RepositoryLink = {
+export type Link = {
   children: React.ReactNode;
   href: string;
 };

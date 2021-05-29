@@ -1,9 +1,13 @@
+import { useContext } from 'react';
+
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes.constant';
-import { HeaderTypes } from '../types/components';
+import { THeader } from '../types/components';
+import { ThemesContext } from '../App';
 
-export default function HeaderContainer(props: HeaderTypes.HeaderInput) {
+export default function HeaderContainer(props: THeader.Input) {
   const { onChange, onSubmit, value } = props;
+  const { theme, toggleTheme } = useContext(ThemesContext);
 
   return (
     <Header>
@@ -15,6 +19,9 @@ export default function HeaderContainer(props: HeaderTypes.HeaderInput) {
         />
         <Header.Input onChange={onChange} onSubmit={onSubmit} value={value} />
       </Header.GroupLeft>
+      <Header.GroupRight>
+        <Header.Toggler theme={theme} onClick={toggleTheme} />
+      </Header.GroupRight>
     </Header>
   );
 }

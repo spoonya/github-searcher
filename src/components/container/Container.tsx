@@ -1,7 +1,7 @@
 import { Inner } from './styles/container';
-import { ContainerTypes } from '../../types/components';
+import { TContainer } from '../../types/components';
 
-export default function Container(props: ContainerTypes.Container) {
+export default function Container(props: TContainer.Inner) {
   const { children } = props;
 
   return <Inner>{children}</Inner>;

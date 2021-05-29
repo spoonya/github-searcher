@@ -52,8 +52,7 @@ export const Name = styled.p`
 export const Link = styled.a`
   margin-bottom: 4rem;
 
-  color: ${({ theme }) => theme.alpha};
-
+  color: ${({ theme }) => theme.link};
   font-size: 1.8rem;
 `;
 

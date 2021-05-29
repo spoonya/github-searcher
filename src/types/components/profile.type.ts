@@ -1,18 +1,18 @@
-export type Profile = {
+export type Inner = {
   children: React.ReactNode;
 };
 
-export type ProfileImage = {
+export type Image = {
   src: string;
   alt: string;
 };
 
-export type ProfileLink = {
+export type Link = {
   children: React.ReactNode;
   href: string;
 };
 
-export type ProfileItem = {
+export type Item = {
   children: React.ReactNode;
   src: string;
   alt: string;

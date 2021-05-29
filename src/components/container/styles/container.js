@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 export const Inner = styled.div`
   display: flex;
 
-  min-height: 89vh;
+  min-height: calc(100vh - 9.5rem);
   width: 1284px;
   max-width: 100%;
   margin: 0 auto;

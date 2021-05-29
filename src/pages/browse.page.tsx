@@ -1,24 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import {
   HeaderContainer,
   InitialContainer,
   ProfileContainer,
   RepositoryContainer,
 } from '../containers';
-import * as ApiTypes from '../types/api.type';
+import * as TApi from '../types/api.type';
 import { Container, Loader } from '../components';
+import { usePrevious } from '../hooks';
 import { prettifyNumber } from '../helpers';
 
 export default function Browse() {
   const [login, setLogin] = useState('');
-  const [repos, setRepos] = useState<ApiTypes.Repository[] | null>(null);
+  const [repos, setRepos] = useState<TApi.Repository[] | null>(null);
   const [pageNum, setPageNum] = useState(0);
-  const [user, setUser] = useState<ApiTypes.User | null>(null);
+  const [user, setUser] = useState<TApi.User | null>(null);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const prevLogin = usePrevious(query);
+  const prevLogin: string = usePrevious(query);
   const reposPerPage: number = 4;
   const pagesVisited: number = pageNum * reposPerPage;
   const pageCount: number = Math.ceil(
@@ -50,17 +51,17 @@ export default function Browse() {
 
     try {
       const res = await fetch(`https://api.github.com/users/${login}`);
-      const data: ApiTypes.User = await res.json();
+      const data: TApi.User = await res.json();
       setUser(data);
     } catch (e) {
-      throw new Error(e.message);
+      console.log(e.message);
     }
   }
 
   async function getRepos() {
     if (!login) return;
 
-    let data: ApiTypes.Repository[] = [];
+    let data: TApi.Repository[] = [];
 
     try {
       const res = await fetch(
@@ -70,7 +71,7 @@ export default function Browse() {
       );
       data = await res.json();
     } catch (e) {
-      throw new Error(e.message);
+      console.log(e.message);
     }
 
     if (data.length) {
@@ -80,15 +81,6 @@ export default function Browse() {
     setTimeout(() => {
       setLoading(false);
     }, 200);
-  }
-
-  function usePrevious(value: string): string {
-    const ref = useRef('');
-
-    useEffect(() => {
-      ref.current = value;
-    }, [value]);
-    return ref.current;
   }
 
   useEffect(() => {

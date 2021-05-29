@@ -1,6 +1,6 @@
 import { Repository } from '../api.type';
 
-type RepositoryTypes = {
+type TRepository = {
   id: number;
   repos: Repository[] | null;
   reposCount: number;
@@ -14,4 +14,4 @@ type RepositoryTypes = {
   isLoading: boolean;
 };
 
-export default RepositoryTypes;
+export default TRepository;

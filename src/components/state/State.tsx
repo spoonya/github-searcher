@@ -1,7 +1,7 @@
 import { Container, Inner, Text, Image } from './styles/state';
-import { StateTypes } from '../../types/components';
+import { TState } from '../../types/components';
 
-export default function State(props: StateTypes.State) {
+export default function State(props: TState.Inner) {
   const { children } = props;
 
   return (
@@ -11,13 +11,13 @@ export default function State(props: StateTypes.State) {
   );
 }
 
-State.Image = function StateImage(props: StateTypes.StateImage) {
+State.Image = function StateImage(props: TState.Image) {
   const { src, alt } = props;
 
   return <Image src={src} alt={alt} />;
 };
 
-State.Text = function StateText(props: StateTypes.State) {
+State.Text = function StateText(props: TState.Inner) {
   const { children } = props;
 
   return <Text>{children}</Text>;

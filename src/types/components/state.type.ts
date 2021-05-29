@@ -1,8 +1,8 @@
-export type State = {
+export type Inner = {
   children: React.ReactNode;
 };
 
-export type StateImage = {
+export type Image = {
   src: string;
   alt: string;
 };

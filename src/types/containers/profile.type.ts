@@ -1,4 +1,4 @@
-type ProfileTypes = {
+type TProfile = {
   id: number;
   image: string;
   name: string;
@@ -8,4 +8,4 @@ type ProfileTypes = {
   following: number | string;
 };
 
-export default ProfileTypes;
+export default TProfile;

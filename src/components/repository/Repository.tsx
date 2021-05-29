@@ -7,29 +7,27 @@ import {
   PaginationContainer,
   PaginationRange,
 } from './styles/repository';
-import { RepositoryTypes } from '../../types/components';
+import { TRepository } from '../../types/components';
 
-export default function Repository(props: RepositoryTypes.Repository) {
+export default function Repository(props: TRepository.Inner) {
   const { children } = props;
 
   return <Container>{children}</Container>;
 }
 
-Repository.Title = function RepositoryTitle(props: RepositoryTypes.Repository) {
+Repository.Title = function RepositoryTitle(props: TRepository.Inner) {
   const { children } = props;
 
   return <Title>{children}</Title>;
 };
 
-Repository.Item = function RepositoryItem(props: RepositoryTypes.Repository) {
+Repository.Item = function RepositoryItem(props: TRepository.Inner) {
   const { children } = props;
 
   return <Item>{children}</Item>;
 };
 
-Repository.Link = function RepositoryLink(
-  props: RepositoryTypes.RepositoryLink,
-) {
+Repository.Link = function RepositoryLink(props: TRepository.Link) {
   const { children, href } = props;
 
   return (
@@ -40,7 +38,7 @@ Repository.Link = function RepositoryLink(
 };
 
 Repository.Description = function RepositoryDescription(
-  props: RepositoryTypes.Repository,
+  props: TRepository.Inner,
 ) {
   const { children } = props;
 
@@ -48,14 +46,14 @@ Repository.Description = function RepositoryDescription(
 };
 
 Repository.PaginationContainer = function RepositoryPaginationContainer(
-  props: RepositoryTypes.Repository,
+  props: TRepository.Inner,
 ) {
   const { children } = props;
 
   return <PaginationContainer>{children}</PaginationContainer>;
 };
 
-Repository.Range = function RepositoryRange(props: RepositoryTypes.Repository) {
+Repository.Range = function RepositoryRange(props: TRepository.Inner) {
   const { children } = props;
 
   return <PaginationRange>{children}</PaginationRange>;

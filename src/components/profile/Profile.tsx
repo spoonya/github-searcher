@@ -8,33 +8,33 @@ import {
   Item,
   Icon,
 } from './styles/profile';
-import { ProfileTypes } from '../../types/components';
+import { TProfile } from '../../types/components';
 
-export default function Profile(props: ProfileTypes.Profile) {
+export default function Profile(props: TProfile.Inner) {
   const { children } = props;
 
   return <Container>{children}</Container>;
 }
 
-Profile.Image = function ProfileImage(props: ProfileTypes.ProfileImage) {
+Profile.Image = function ProfileImage(props: TProfile.Image) {
   const { src, alt } = props;
 
   return <Image src={src} alt={alt} />;
 };
 
-Profile.Info = function ProfileInfo(props: ProfileTypes.Profile) {
+Profile.Info = function ProfileInfo(props: TProfile.Inner) {
   const { children } = props;
 
   return <Info>{children}</Info>;
 };
 
-Profile.Name = function ProfileName(props: ProfileTypes.Profile) {
+Profile.Name = function ProfileName(props: TProfile.Inner) {
   const { children } = props;
 
   return <Name>{children}</Name>;
 };
 
-Profile.Link = function ProfileLink(props: ProfileTypes.ProfileLink) {
+Profile.Link = function ProfileLink(props: TProfile.Link) {
   const { children, href } = props;
 
   return (
@@ -44,13 +44,13 @@ Profile.Link = function ProfileLink(props: ProfileTypes.ProfileLink) {
   );
 };
 
-Profile.Group = function ProfileGroup(props: ProfileTypes.Profile) {
+Profile.Group = function ProfileGroup(props: TProfile.Inner) {
   const { children } = props;
 
   return <Group>{children}</Group>;
 };
 
-Profile.Item = function ProfileItem(props: ProfileTypes.ProfileItem) {
+Profile.Item = function ProfileItem(props: TProfile.Item) {
   const { children, src, alt } = props;
 
   return (

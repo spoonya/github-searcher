@@ -1,3 +1,3 @@
-export type Container = {
+export type Inner = {
   children: React.ReactNode;
 };

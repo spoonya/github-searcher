@@ -1,9 +1,9 @@
 import { Repository } from '../components';
 import ReactPaginate from 'react-paginate';
 import { NoreposContainer } from '.';
-import RepositoryTypes from '../types/containers/repository.type';
+import TRepository from '../types/containers/repository.type';
 
-export default function RepositoryContainer(props: RepositoryTypes) {
+export default function RepositoryContainer(props: TRepository) {
   const {
     id,
     repos,

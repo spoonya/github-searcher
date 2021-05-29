@@ -1,5 +1,5 @@
-export * as ContainerTypes from './container.type';
-export * as HeaderTypes from './header.type';
-export * as ProfileTypes from './profile.type';
-export * as StateTypes from './state.type';
-export * as RepositoryTypes from './repository.type';
+export * as TContainer from './container.type';
+export * as THeader from './header.type';
+export * as TProfile from './profile.type';
+export * as TState from './state.type';
+export * as TRepository from './repository.type';
