@@ -1,8 +1,10 @@
-export type Inner = {
+type Inner = {
   children: React.ReactNode;
 };
 
-export type Link = {
+type Link = {
   children: React.ReactNode;
   href: string;
 };
+
+export type { Inner, Link };

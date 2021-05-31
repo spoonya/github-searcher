@@ -1,4 +1,4 @@
-export type User = {
+type User = {
   readonly id: number;
   readonly avatar_url: string;
   readonly name: string;
@@ -9,10 +9,12 @@ export type User = {
   readonly following: number;
 };
 
-export type Repository = {
+type Repository = {
   readonly id: number;
   readonly name: string;
   readonly description: string;
   readonly html_url: string;
   readonly pushed_at: string;
 };
+
+export type { User, Repository };

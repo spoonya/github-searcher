@@ -1,26 +1,29 @@
 import { Profile } from '../components';
 import NouserContainer from './nouser.container';
-import ProfileProps from '../types/containers/profile.type';
+import { Loader } from '../components/';
+import { prettifyNumber } from '../helpers';
+import { useTypedSelector } from '../hooks';
 
-export default function ProfileContainer(props: ProfileProps) {
-  const { id, image, name, login, loginUrl, followers, following } = props;
+export default function ProfileContainer() {
+  const { user, isUserLoading } = useTypedSelector(({ user }) => user);
 
   return (
     <>
-      {id ? (
+      {user.id ? (
         <Profile>
-          <Profile.Image src={image} alt={login} />
+          {isUserLoading ? <Loader fullHeight /> : null}
+          <Profile.Image src={user.avatar_url} alt={user.login} />
           <Profile.Info>
-            <Profile.Name>{name}</Profile.Name>
-            <Profile.Link href={loginUrl}>{login}</Profile.Link>
+            <Profile.Name>{user.name}</Profile.Name>
+            <Profile.Link href={user.html_url}>{user.login}</Profile.Link>
             <Profile.Group>
               <Profile.Item src="images/profile/followers.svg" alt="Followers">
-                {followers === 1
-                  ? `${followers} follower`
-                  : `${followers} followers`}
+                {user.followers === 1
+                  ? `${user.followers} follower`
+                  : `${prettifyNumber(user.followers)} followers`}
               </Profile.Item>
               <Profile.Item src="images/profile/following.svg" alt="Following">
-                {following} following
+                {prettifyNumber(user.following)} following
               </Profile.Item>
             </Profile.Group>
           </Profile.Info>

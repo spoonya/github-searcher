@@ -1,6 +1,6 @@
-import TTheme, { TThemeCfg } from '../types/theme.type';
+import Theme, { ThemeCfg } from '../types/theme.type';
 
-export const THEME_LIGHT: TTheme = {
+const THEME_LIGHT: Theme = {
   alpha: '#0064eb',
   beta: '#fff',
   gamma: '#000',
@@ -10,7 +10,7 @@ export const THEME_LIGHT: TTheme = {
   pagLinkActive: '#fff',
 };
 
-export const THEME_DARK: TTheme = {
+const THEME_DARK: Theme = {
   alpha: '#2d333b',
   beta: '#383e46',
   gamma: '#cfcfcf',
@@ -20,8 +20,10 @@ export const THEME_DARK: TTheme = {
   pagLinkActive: '#ccc',
 };
 
-export const THEME_CFG: TThemeCfg = {
+const THEME_CFG: ThemeCfg = {
   light: 'light',
   dark: 'dark',
   storage: 'ghSearcher-theme',
 };
+
+export { THEME_LIGHT, THEME_DARK, THEME_CFG };

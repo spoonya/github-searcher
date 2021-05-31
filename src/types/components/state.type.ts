@@ -1,13 +1,15 @@
-export type Inner = {
+type Inner = {
   children: React.ReactNode;
   fullHeight?: boolean;
 };
 
-export type Image = {
+type Image = {
   src: string;
   alt: string;
 };
 
-export type Text = {
+type Text = {
   children: React.ReactNode;
 };
+
+export type { Inner, Image, Text };

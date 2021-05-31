@@ -1,20 +1,22 @@
-export type Inner = {
+type Inner = {
   children: React.ReactNode;
 };
 
-export type Logo = {
+type Logo = {
   to: string;
   src: string;
   alt: string;
 };
 
-export type Input = {
+type Input = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   value: string;
 };
 
-export type Toggler = {
+type Toggler = {
   onClick: () => void;
   theme: string;
 };
+
+export type { Inner, Logo, Input, Toggler };

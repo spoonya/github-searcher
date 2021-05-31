@@ -1,4 +1,4 @@
-type TTheme = {
+type Theme = {
   readonly alpha: string;
   readonly beta: string;
   readonly gamma: string;
@@ -8,10 +8,11 @@ type TTheme = {
   readonly pagLinkActive: string;
 };
 
-export type TThemeCfg = {
+type ThemeCfg = {
   readonly dark: string;
   readonly light: string;
   readonly storage: string;
 };
 
-export default TTheme;
+export type { ThemeCfg };
+export default Theme;

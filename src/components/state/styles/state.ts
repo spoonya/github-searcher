@@ -10,7 +10,7 @@ export const Container = styled.div<ContainerProps>`
   justify-content: center;
 
   ${({ fullHeight }: ContainerProps) =>
-    fullHeight && `height: calc(100vh - 14rem);`}
+    fullHeight && `min-height: calc(100vh - 14rem);`}
 
   width: 100%;
 `;

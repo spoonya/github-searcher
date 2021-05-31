@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import { THEME_CFG } from '../constants/themes.constant';
 
 export default function useThemes() {
-  const [theme, setTheme] = useState(THEME_CFG.light);
+  const defaultTheme =
+    localStorage.getItem(THEME_CFG.storage) || THEME_CFG.light;
+
+  const [theme, setTheme] = useState(defaultTheme);
 
   function setMode(mode: string) {
     localStorage.setItem(THEME_CFG.storage, mode);
