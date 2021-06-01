@@ -5,10 +5,11 @@ import {
   RepositoryContainer,
 } from '../containers';
 import { Container } from '../components';
+import { Loader } from '../components/';
 import { useTypedSelector } from '../hooks';
 
 export default function Browse() {
-  const { query } = useTypedSelector(({ user }) => user);
+  const { query, isUserLoading } = useTypedSelector(({ user }) => user);
 
   return (
     <>
@@ -16,6 +17,7 @@ export default function Browse() {
       <Container>
         {query ? (
           <>
+            {isUserLoading ? <Loader /> : null}
             <ProfileContainer />
             <RepositoryContainer />
           </>

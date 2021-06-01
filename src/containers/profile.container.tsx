@@ -1,17 +1,15 @@
 import { Profile } from '../components';
 import NouserContainer from './nouser.container';
-import { Loader } from '../components/';
 import { prettifyNumber } from '../helpers';
 import { useTypedSelector } from '../hooks';
 
 export default function ProfileContainer() {
-  const { user, isUserLoading } = useTypedSelector(({ user }) => user);
+  const { user } = useTypedSelector(({ user }) => user);
 
   return (
     <>
       {user.id ? (
         <Profile>
-          {isUserLoading ? <Loader fullHeight /> : null}
           <Profile.Image src={user.avatar_url} alt={user.login} />
           <Profile.Info>
             <Profile.Name>{user.name}</Profile.Name>
