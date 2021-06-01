@@ -1,13 +1,15 @@
 import { Container, Spinner } from './styles/loader';
 
-type Props = {
-  fullHeight?: boolean;
-};
+import { TLoader } from '../../types/components';
 
-export default function Loader({ fullHeight }: Props) {
+function Loader(props: TLoader.Inner) {
+  const { topZindex, fullHeight } = props;
+
   return (
-    <Container fullHeight={fullHeight}>
+    <Container topZindex={topZindex} fullHeight={fullHeight}>
       <Spinner />
     </Container>
   );
 }
+
+export default Loader;

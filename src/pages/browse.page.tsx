@@ -4,8 +4,7 @@ import {
   ProfileContainer,
   RepositoryContainer,
 } from '../containers';
-import { Container } from '../components';
-import { Loader } from '../components/';
+import { Container, Loader } from '../components';
 import { useTypedSelector } from '../hooks';
 
 export default function Browse() {
@@ -17,7 +16,7 @@ export default function Browse() {
       <Container>
         {query ? (
           <>
-            {isUserLoading ? <Loader /> : null}
+            {isUserLoading ? <Loader topZindex /> : null}
             <ProfileContainer />
             <RepositoryContainer />
           </>

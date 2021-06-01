@@ -1,13 +1,11 @@
 import styled from 'styled-components/macro';
 
-type ContainerProps = {
-  fullHeight?: boolean;
-};
+import { TLoader } from '../../../types/components';
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<TLoader.Inner>`
   position: absolute;
   top: 8rem;
-  ${({ fullHeight }: ContainerProps) => fullHeight && `top: 0;`}
+  ${({ fullHeight }) => fullHeight && `top: 0;`}
   bottom: 0;
   left: 0;
   right: 0;
@@ -18,7 +16,8 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   justify-content: center;
 
-  z-index: 10;
+  z-index: 9;
+  ${({ topZindex }) => topZindex && `z-index: 10;`}
 `;
 
 export const Spinner = styled.div`

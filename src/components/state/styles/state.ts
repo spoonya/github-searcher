@@ -1,16 +1,13 @@
 import styled from 'styled-components/macro';
 
-type ContainerProps = {
-  fullHeight?: boolean;
-};
+import { TState } from '../../../types/components';
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<TState.Inner>`
   display: flex;
   align-items: center;
   justify-content: center;
 
-  ${({ fullHeight }: ContainerProps) =>
-    fullHeight && `min-height: calc(100vh - 14rem);`}
+  ${({ fullHeight }) => fullHeight && `min-height: calc(100vh - 14rem);`}
 
   width: 100%;
 `;
