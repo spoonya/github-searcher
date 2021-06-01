@@ -20,11 +20,6 @@ const fetchUser = (login: string) => async (dispatch: Dispatch<UserAction>) => {
   }
 };
 
-const setInput = (input: string): UserAction => ({
-  type: UserActionTypes.SET_INPUT,
-  payload: input,
-});
-
 const setQuery = (query: string): UserAction => ({
   type: UserActionTypes.SET_QUERY,
   payload: query,
@@ -40,4 +35,4 @@ const setUserLoading = (isLoading: boolean): UserAction => ({
   payload: isLoading,
 });
 
-export { fetchUser, setInput, setQuery };
+export { fetchUser, setQuery };

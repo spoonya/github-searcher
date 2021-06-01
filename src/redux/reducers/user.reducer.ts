@@ -6,7 +6,6 @@ import {
 } from '../../types/redux/user.type';
 
 const initialState: UserState = {
-  input: '',
   query: '',
   user: {} as User,
   isUserLoading: true,
@@ -14,12 +13,6 @@ const initialState: UserState = {
 
 const user = (state = initialState, action: UserAction): UserState => {
   switch (action.type) {
-    case UserActionTypes.SET_INPUT:
-      return {
-        ...state,
-        input: action.payload,
-      };
-
     case UserActionTypes.SET_QUERY:
       return {
         ...state,

@@ -1,16 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { useTypedSelector } from '../hooks';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes.constant';
-import { ThemesContext } from '../context';
+import ThemesContext from '../context/themes.context';
 import { useActions } from '../hooks';
 
 export default function HeaderContainer() {
-  const { input, query } = useTypedSelector(({ user }) => user);
-  const { setInput, setQuery, fetchUser } = useActions();
-  const { fetchRepos } = useActions();
+  const { query } = useTypedSelector(({ user }) => user);
+  const { setQuery, fetchUser, fetchRepos } = useActions();
+  const [input, setInput] = useState('');
 
   const { theme, toggleTheme } = useContext(ThemesContext);
 

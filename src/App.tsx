@@ -8,7 +8,7 @@ import {
   THEME_DARK,
   THEME_CFG,
 } from './constants/themes.constant';
-import { ThemesContext } from './context';
+import ThemesContext from './context/themes.context';
 import { Browse } from './pages';
 import { useThemes } from './hooks';
 
